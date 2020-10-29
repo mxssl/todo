@@ -1,0 +1,17 @@
+version: '3'
+
+tasks:
+  swagger-validate:
+    desc: Validate swagger file
+    cmds:
+      - swagger validate ./swagger.yml
+
+  swagger-generate:
+    desc: Generate server based on a swagger file
+    cmds:
+      - swagger generate server -A todo -f ./swagger.yml
+
+  run:
+    desc: Run server for local development
+    cmds:
+      - go run cmd/todo-server/main.go --port 8080
