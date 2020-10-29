@@ -15,3 +15,13 @@ tasks:
     desc: Run server for local development
     cmds:
       - go run cmd/todo-server/main.go --port 8080
+
+  dc-build:
+    desc: Run docker-compose build
+    cmds:
+      - docker-compose build
+
+  dc-up:
+    desc: Run docker-compose up
+    cmds:
+      - docker-compose up
