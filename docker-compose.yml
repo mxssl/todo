@@ -9,3 +9,12 @@ services:
     command: ./todo --host=0.0.0.0 --port=80
     ports:
       - "8080:80"
+
+  swagger:
+    image: swaggerapi/swagger-ui:v3.36.0
+    environment:
+      SWAGGER_JSON: "/swagger.yml"
+    volumes:
+      - "./swagger.yml:/swagger.yml"
+    ports:
+      - "8081:8080"

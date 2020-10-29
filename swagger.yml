@@ -9,6 +9,7 @@ produces:
 - application/json
 schemes:
 - http
+host: localhost:8080
 paths:
   /:
     get:

@@ -25,3 +25,8 @@ tasks:
     desc: Run docker-compose up
     cmds:
       - docker-compose up
+
+  swagger:
+    desc: Run docker-compose up swagger
+    cmds:
+      - docker-compose up swagger
