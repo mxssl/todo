@@ -1,5 +1,14 @@
 version: '3'
 
+vars:
+  APP_NAME: "todo"
+  DOCKER_REGISTRY: "mxssl"
+  GO111MODULE: "on"
+  GIT_COMMIT:
+    sh: git rev-parse --short HEAD
+  GIT_TAG:
+    sh: git describe --tags --abbrev=0
+
 tasks:
   swagger-validate:
     desc: Validate swagger file
@@ -30,3 +39,33 @@ tasks:
     desc: Run docker-compose up swagger
     cmds:
       - docker-compose up swagger
+
+  test:
+    desc: Run unit tests
+    cmds:
+      - go test ./...
+
+  lint:
+    desc: Run linter
+    cmds:
+      - golangci-lint run
+
+  github-release-dry:
+    desc: Goreleaser test
+    cmds:
+      - echo "TAG - {{ .GIT_TAG }}"
+      - goreleaser release --rm-dist --snapshot --skip-publish
+
+  github-release:
+    desc: Goreleaser
+    cmds:
+      - echo "TAG - {{ .GIT_TAG }}"
+      - goreleaser release --rm-dist
+
+  docker-release:
+    desc: Build and push docker image
+    cmds:
+      - echo "Registry - ${DOCKER_REGISTRY}"
+      - echo "TAG - {{ .GIT_TAG }}"
+      - docker build --tag {{ DOCKER_REGISTRY }}/{{ BINARY_NAME  }}:{{ .GIT_TAG }} .
+      - docker push {{ DOCKER_REGISTRY }}/{{ BINARY_NAME  }}:{{ .GIT_TAG }}
