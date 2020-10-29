@@ -65,7 +65,7 @@ tasks:
   docker-release:
     desc: Build and push docker image
     cmds:
-      - echo "Registry - ${DOCKER_REGISTRY}"
+      - echo "Registry - {{ .DOCKER_REGISTRY }}"
       - echo "TAG - {{ .GIT_TAG }}"
-      - docker build --tag {{ DOCKER_REGISTRY }}/{{ BINARY_NAME  }}:{{ .GIT_TAG }} .
-      - docker push {{ DOCKER_REGISTRY }}/{{ BINARY_NAME  }}:{{ .GIT_TAG }}
+      - docker build --tag {{ .DOCKER_REGISTRY }}/{{ .APP_NAME  }}:{{ .GIT_TAG }} .
+      - docker push {{ .DOCKER_REGISTRY }}/{{ .APP_NAME  }}:{{ .GIT_TAG }}
