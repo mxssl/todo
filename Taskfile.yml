@@ -21,7 +21,7 @@ tasks:
       - swagger generate server -A todo -f ./swagger.yml
 
   run:
-    desc: Run server for local development
+    desc: Run server for development
     cmds:
       - go run cmd/todo-server/main.go --port 8080
 
@@ -46,9 +46,29 @@ tasks:
       - go test ./...
 
   lint:
-    desc: Run linter
+    desc: Run linters
     cmds:
       - golangci-lint run
+      - gocritic check ./...
+      - yamllint .
+      - hadolint Dockerfile
+
+  docker-lint:
+    desc: Run linters in docker containers
+    cmds:
+      - |
+        docker \
+          run \
+          --rm \
+          -v $(pwd)/Dockerfile:/Dockerfile \
+          replicated/dockerfilelint:f7bdc89 \
+          /Dockerfile
+      - |
+        docker \
+          run \
+          --rm \
+          -v $(pwd)/.hadolint.yaml:/.hadolint.yaml \
+          -i hadolint/hadolint:v1.18.2 < Dockerfile
 
   github-release-dry:
     desc: Goreleaser test

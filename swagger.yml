@@ -4,11 +4,11 @@ info:
   version: 0.0.1
   description: My example of a todo app
 consumes:
-- application/json
+  - application/json
 produces:
-- application/json
+  - application/json
 schemes:
-- http
+  - http
 host: localhost:8080
 paths:
   /:

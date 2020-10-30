@@ -13,8 +13,8 @@ RUN apk add --no-cache \
 
 # Compile binary
 RUN CGO_ENABLED=0 \
-  GOOS=`go env GOHOSTOS` \
-  GOARCH=`go env GOHOSTARCH` \
+  GOOS=$(go env GOHOSTOS) \
+  GOARCH=$(go env GOHOSTARCH) \
   go build -v -mod=vendor -o todo cmd/todo-server/main.go
 
 # Copy compiled binary to clear Alpine Linux image

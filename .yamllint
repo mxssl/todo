@@ -1,0 +1,14 @@
+yaml-files:
+  - '*.yaml'
+  - '*.yml'
+  - '.yamllint'
+
+extends: default
+rules:
+  line-length: disable
+  truthy: disable
+  document-start: disable
+ignore: |
+  vendor
+  *.MD
+  dist
