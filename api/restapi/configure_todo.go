@@ -66,7 +66,7 @@ func configureAPI(api *operations.TodoAPI) http.Handler {
 
 	api.PreServerShutdown = func() {}
 
-	// api.ServerShutdown = func() {}
+	api.ServerShutdown = func() {}
 
 	return setupGlobalMiddleware(api.Serve(setupMiddlewares))
 }

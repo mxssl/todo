@@ -53,12 +53,8 @@ func main() {
 	}
 
 	api := operations.NewTodoAPI(swaggerSpec)
-	api.ServerShutdown = func() {
-		d.Close()
-		log.Println("Database connection pool closed")
-	}
 	server := restapi.NewServer(api)
-	defer server.Shutdown()
+
 	handlers.Init(itemStore, api)
 
 	parser := flags.NewParser(server, flags.Default)
@@ -79,12 +75,21 @@ func main() {
 				code = 0
 			}
 		}
-		os.Exit(code)
+		if code != 0 {
+			log.Fatalln(code)
+		}
 	}
 
 	server.ConfigureAPI()
 
 	if err := server.Serve(); err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
+
+	if err := server.Shutdown(); err != nil {
+		log.Println(err)
+	}
+
+	d.Close()
+	log.Println("Database connection pool closed")
 }
