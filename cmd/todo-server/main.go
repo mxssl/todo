@@ -53,6 +53,10 @@ func main() {
 	}
 
 	api := operations.NewTodoAPI(swaggerSpec)
+	api.ServerShutdown = func() {
+		d.Close()
+		log.Println("Database connection pool closed")
+	}
 	server := restapi.NewServer(api)
 	defer server.Shutdown()
 	handlers.Init(itemStore, api)

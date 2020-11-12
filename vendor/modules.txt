@@ -4,21 +4,8 @@ github.com/PuerkitoBio/purell
 github.com/PuerkitoBio/urlesc
 # github.com/asaskevich/govalidator v0.0.0-20200428143746-21a406dcc535
 github.com/asaskevich/govalidator
-# github.com/carbocation/handlers v0.0.0-20140528190747-c939c6d9ef31
-## explicit
-github.com/carbocation/handlers
-# github.com/carbocation/interpose v0.0.0-20161206215253-723534742ba3
-## explicit
-github.com/carbocation/interpose/adaptors
-github.com/carbocation/interpose/middleware
-# github.com/codegangsta/inject v0.0.0-20150114235600-33e0aa1cb7c0
-## explicit
-github.com/codegangsta/inject
 # github.com/docker/go-units v0.4.0
 github.com/docker/go-units
-# github.com/go-martini/martini v0.0.0-20170121215854-22fa46961aab
-## explicit
-github.com/go-martini/martini
 # github.com/go-openapi/analysis v0.19.10
 github.com/go-openapi/analysis
 github.com/go-openapi/analysis/internal
@@ -56,9 +43,6 @@ github.com/go-openapi/swag
 github.com/go-openapi/validate
 # github.com/go-stack/stack v1.8.0
 github.com/go-stack/stack
-# github.com/goods/httpbuf v0.0.0-20120503183857-5709e9bb814c
-## explicit
-github.com/goods/httpbuf
 # github.com/jessevdk/go-flags v1.4.0
 ## explicit
 github.com/jessevdk/go-flags
@@ -69,9 +53,6 @@ github.com/jmoiron/sqlx/reflectx
 # github.com/joho/godotenv v1.3.0
 ## explicit
 github.com/joho/godotenv
-# github.com/justinas/nosurf v1.1.1
-## explicit
-github.com/justinas/nosurf
 # github.com/lib/pq v1.0.0
 ## explicit
 github.com/lib/pq
@@ -80,22 +61,14 @@ github.com/lib/pq/oid
 github.com/mailru/easyjson/buffer
 github.com/mailru/easyjson/jlexer
 github.com/mailru/easyjson/jwriter
-# github.com/meatballhat/negroni-logrus v1.1.0
-## explicit
-github.com/meatballhat/negroni-logrus
 # github.com/mitchellh/mapstructure v1.3.2
 github.com/mitchellh/mapstructure
-# github.com/phyber/negroni-gzip v0.0.0-20180113114010-ef6356a5d029
-## explicit
-github.com/phyber/negroni-gzip/gzip
 # github.com/rs/cors v1.7.0
 ## explicit
 github.com/rs/cors
 # github.com/sirupsen/logrus v1.7.0
 ## explicit
 github.com/sirupsen/logrus
-# github.com/urfave/negroni v1.0.0
-github.com/urfave/negroni
 # go.mongodb.org/mongo-driver v1.3.4
 go.mongodb.org/mongo-driver/bson
 go.mongodb.org/mongo-driver/bson/bsoncodec
@@ -119,5 +92,7 @@ golang.org/x/text/transform
 golang.org/x/text/unicode/bidi
 golang.org/x/text/unicode/norm
 golang.org/x/text/width
+# google.golang.org/appengine v1.6.7
+## explicit
 # gopkg.in/yaml.v2 v2.3.0
 gopkg.in/yaml.v2
