@@ -1,5 +1,7 @@
 version: '3'
 
+dotenv: ['.env']
+
 vars:
   APP_NAME: "todo"
   DOCKER_REGISTRY: "mxssl"
@@ -18,12 +20,37 @@ tasks:
   swagger-generate:
     desc: Generate server based on a swagger file
     cmds:
-      - swagger generate server -A todo -f ./swagger.yml
+      - swagger generate server -t api -A todo --exclude-main -f ./swagger.yml
 
   run:
     desc: Run server for development
     cmds:
       - go run cmd/todo-server/main.go --port 8080
+
+  migrations-up:
+    desc: Run database migrations
+    cmds:
+      - echo $DB_HOST
+      - |
+        migrate \
+          -source file://migrations \
+          -database postgres://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/$DB_NAME?sslmode=disable \
+          up
+
+  migrations-down:
+    desc: Run database migrations
+    cmds:
+      - echo $DB_HOST
+      - |
+        migrate \
+          -source file://migrations \
+          -database postgres://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/$DB_NAME?sslmode=disable \
+          down
+
+  migrations-create:
+    desc: Create new database migrations
+    cmds:
+      - migrate create -ext .sql -dir migrations {{ .DB_MIGRATONS_NAME }}
 
   dc-build:
     desc: Run docker-compose build

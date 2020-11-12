@@ -37,3 +37,17 @@ task swagger-validate
 ```sh
 task swagger-generate
 ```
+
+### Databse migratons
+
+#### Create new migrations
+
+```sh
+DB_MIGRATONS_NAME="new_migrations_name" task migrations-create
+```
+
+#### Run existing migrations
+
+```sh
+task migrations-up
+```

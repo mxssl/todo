@@ -106,6 +106,7 @@ definitions:
         minLength: 1
       completed:
         type: boolean
+        x-omitempty: false
   error:
     type: object
     required:
